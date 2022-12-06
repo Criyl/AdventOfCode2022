@@ -42,7 +42,7 @@ with open("input.txt") as file:
         opponent, cheater = line.strip().split(' ')
 
         part1 += MATCHUP_SCORE[(opponent, XYZ_TO_ABC[cheater])]
-    
+
         desire = MATCHUP_VICTORY[(opponent, XYZ_TO_RESULT[cheater])]
         part2 += MATCHUP_SCORE[(opponent, desire)]
 
