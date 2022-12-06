@@ -1,5 +1,5 @@
 import pytest
-from main import getCommon, getScore
+from main import getCommon, getScore, intersectMany
 
 @pytest.mark.parametrize("sack, expected", [
     ('vJrwpWtwJgWrhcsFMMfFFhFp', 'p'),
@@ -11,6 +11,15 @@ from main import getCommon, getScore
 ])
 def test_common(sack, expected):
     assert getCommon(sack) == expected
+
+
+@pytest.mark.parametrize("sacks, expected", [
+    (['vJrwpWtwJgWrhcsFMMfFFhFp', 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL', 'PmmdzqPrVvPwwTWBwg'], 'r'),
+    (['wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn', 'ttgJtRGJQctTZtZT', 'CrZsJsPPZsGzwwsLwLmpwMDw'], 'Z')
+])
+def test_badge(sacks, expected):
+    assert intersectMany(sacks) == expected
+
 
 @pytest.mark.parametrize("common, expected", [
     ('p', 16),

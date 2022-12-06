@@ -1,9 +1,8 @@
 
-def getCommon(sack: str):
+def getCommon(sack: str) -> str:
     half = int(len(sack)/2)
-    first = sack[:half]
-    second = sack[half:]
-    return "".join(set(first).intersection(second))
+    compartments = [sack[:half], sack[half:]]
+    return intersectMany(compartments)
 
 
 def getScore(common):
@@ -13,12 +12,34 @@ def getScore(common):
     return ordinal - 64 + 26
 
 
-total_score = 0
-with open("input.txt") as file:
-    for line in file.readlines():
-        stripped = line.strip()
-        print(stripped)
-        common = getCommon(stripped)
-        score = getScore(common)
-        total_score += score
-print(total_score)
+def intersectMany(sacks):
+    intersect = set(sacks[0])
+    for sack in sacks[1:]:
+        intersect = intersect.intersection(set(sack))
+    return "".join(intersect)
+
+
+if __name__ == "__main__":
+    part1 = 0
+
+    thruple = []
+    part2 = 0
+
+    with open("input.txt") as file:
+        for line in file.readlines():
+            stripped = line.strip()
+
+            half = int(len(stripped)/2)
+            compartments = [stripped[:half], stripped[half:]]
+            common = intersectMany(compartments)
+
+            part1 += getScore(common)
+
+            thruple += [stripped]
+            if len(thruple) == 3:
+                badge = intersectMany(thruple)
+                part2 += getScore(badge)
+                thruple = []
+
+    print(f"Part 1: {part1}")
+    print(f"Part 2: {part2}")
