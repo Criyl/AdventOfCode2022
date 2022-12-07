@@ -15,7 +15,11 @@ def getMarker(signal, n=4):
 
 
 if __name__ == "__main__":
+    part1 = ""
+    part2 = ""
     with open("day_6/input.txt") as file:
         line = file.readline()
-        print(line)
-        print(getMarker(line))
+        part1 = getMarker(line)
+        part2 = getMarker(line, 14)
+    print(f"Part1: {part1}")
+    print(f"Part2: {part2}")
