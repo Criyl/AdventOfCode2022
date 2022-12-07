@@ -26,4 +26,3 @@ def test_CrateMover_9000(start, move, expected):
 ])
 def test_CrateMover_9001(start, move, expected):
     assert doMove9001(start, move) == expected
-

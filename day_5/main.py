@@ -1,4 +1,5 @@
 import re
+import copy
 
 
 def parseContainers(containers):
@@ -73,8 +74,6 @@ if __name__ == "__main__":
             line = file.readline()
         containers = parseContainers(crateString)
 
-        import copy
-        
         part1_containers = copy.deepcopy(containers)
         part2_containers = copy.deepcopy(containers)
 
