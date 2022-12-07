@@ -35,7 +35,7 @@ MATCHUP_VICTORY = {
 
 part1 = 0
 part2 = 0
-with open("input.txt") as file:
+with open("day_2/input.txt") as file:
     for line in file.readlines():
         if line == '':
             break

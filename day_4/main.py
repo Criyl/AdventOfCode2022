@@ -18,8 +18,8 @@ def stringToRange(rangeString):
 
 if __name__ == "__main__":
     part1 = 0
-    part2 = 0 
-    with open("input.txt") as file:
+    part2 = 0
+    with open("day_4/input.txt") as file:
         for line in file.readlines():
             a, b = line.strip().split(',')
 
