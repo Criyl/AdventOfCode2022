@@ -1,5 +1,6 @@
 import pytest
-from main import isRedundant, doOverlap
+from day_4 import isRedundant, doOverlap
+
 
 @pytest.mark.parametrize("range_a, range_b, expected", [
     (range(2, 4+1), range(6, 8+1), False),

@@ -35,14 +35,14 @@ MATCHUP_VICTORY = {
 
 part1 = 0
 part2 = 0
-with open("input.txt") as file:
+with open("day_2/input.txt") as file:
     for line in file.readlines():
         if line == '':
             break
         opponent, cheater = line.strip().split(' ')
 
         part1 += MATCHUP_SCORE[(opponent, XYZ_TO_ABC[cheater])]
-    
+
         desire = MATCHUP_VICTORY[(opponent, XYZ_TO_RESULT[cheater])]
         part2 += MATCHUP_SCORE[(opponent, desire)]
 

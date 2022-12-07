@@ -1,0 +1,19 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.x
+      - name: Install Dagger-IO
+        run: python3 -m pip install dagger-io
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Dagger CI
+        run: python3 ci.py
