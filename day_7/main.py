@@ -64,8 +64,6 @@ def sizeup(directory, name=""):
 
 
 if __name__ == "__main__":
-    part1 = 0
-    part2 = 0
     with open("day_7/input.txt") as file:
         text = file.read()
         filesystem = buildDict(text)
@@ -73,3 +71,9 @@ if __name__ == "__main__":
         filtered = filter(lambda x: x <= 100000, sizes.values())
         part1 = sum(filtered)
         print(f"Part1: {part1}")
+
+        desired_space = sizes['./'] - 40000000
+        filtered = filter(lambda x: x >= desired_space, sizes.values())
+        sorted_sizes = sorted(filtered)
+        part2 = sorted_sizes[0]
+        print(f"Part2: {part2}")
