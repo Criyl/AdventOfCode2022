@@ -1,7 +1,25 @@
+def handleChangeDirectory(param, head, working_directory, active):
+    if param == ["/"]:
+        working_directory = ["/"]
+        active = head
+    elif param == [".."]:
+        working_directory.pop()
+        if working_directory == []:
+            working_directory = ["/"]
+        active = head
+        for dir in working_directory[1:]:
+            active = active[dir]
+    else:
+        working_directory += param
+        active[param[0]] = {}
+        active = active[param[0]]
+    return (working_directory, active)
+
+
 def buildDict(text):
-    result = {}
-    pwd = ["/"]
-    active = result
+    head = {}
+    working_directory = ["/"]
+    active = head
     lines = [line.split(" ") for line in text.splitlines()]
     index = 0
     while index < len(lines):
@@ -10,29 +28,15 @@ def buildDict(text):
             command = args[1]
             param = args[2:]
             if command == "cd":
-                if param == ["/"]:
-                    pwd = ["/"]
-                    active = result
-                elif param == [".."]:
-                    pwd.pop()
-                    if pwd == []:
-                        pwd = ["/"]
-                    active = result
-                    for dir in pwd[1:]:
-                        active = active[dir]
-                else:
-                    pwd += param
-                    active[param[0]] = {}
-                    active = active[param[0]]
+                working_directory, active = handleChangeDirectory(param, head, working_directory, active)
             elif command == "ls":
                 while index+1 < len(lines) and "$" not in lines[index+1]:
-
                     size, name = lines[index+1]
                     if size != "dir":
                         active[name] = int(size)
                     index += 1
         index += 1
-    return {"/": result}
+    return {"/": head}
 
 
 def sumDirectory(directory):

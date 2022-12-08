@@ -89,7 +89,7 @@ def test_sum_directory(dir_dict, expected):
             "./.a": 94853,
             "./.a.e": 584,
             "./.d": 24933642
-        } 
+        }
     )
 ])
 def test_sizeup(directory, expected):
