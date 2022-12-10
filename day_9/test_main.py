@@ -1,42 +1,26 @@
 import pytest
-from day_9 import generatePath, predict
+from day_9 import generatePath, predict, iterate
 
 
 @pytest.mark.parametrize(
-    "steps, expectedhead, expectedtail",
+    "steps, length, expected",
     [
         (
             "R 4\nU 4\nL 3\nD 1\nR 4\nD 1\nL 5\nR 2",
-            [
-                (0, 0),
-                (1, 0), (2, 0), (3, 0), (4, 0),
-                (4, 1), (4, 2), (4, 3), (4, 4),
-                (3, 4), (2, 4), (1, 4),
-                (1, 3),
-                (2, 3), (3, 3), (4, 3), (5, 3),
-                (5, 2),
-                (4, 2), (3, 2), (2, 2), (1, 2), (0, 2),
-                (1, 2), (2, 2)
-            ],
-            [
-                (0, 0), (0, 0),
-                (1, 0), (2, 0), (3, 0), (3, 0),
-                (4, 1), (4, 2), (4, 3), (4, 3),
-                (3, 4), (2, 4), (2, 4),
-                (2, 4),
-                (2, 4), (3, 3), (4, 3), (4, 3),
-                (4, 3),
-                (4, 3), (3, 2), (2, 2), (1, 2), (1, 2),
-                (1, 2)
-            ]
+            10,
+            #  H       1       2       3       4       5       6       7       8       9
+            [(2, 2), (1, 2), (2, 2), (3, 2), (2, 2), (1, 1), (0, 0), (0, 0), (0, 0), (0, 0)]
+        ),
+        (
+            "R 4\nU 4\nL 3\nD 1\nR 4\nD 1\nL 5\nR 2",
+            2,
+            [(2, 2), (1, 2)]
         )
     ],
 )
-def test_path(steps, expectedhead, expectedtail):
-    head, tail = generatePath(steps)
-
-    assert head == expectedhead
-    assert tail == expectedtail
+def test_path(steps, length, expected):
+    history = generatePath(steps, length)
+    assert history[len(history)-1] == expected
 
 
 @pytest.mark.parametrize(
@@ -74,7 +58,21 @@ def test_path(steps, expectedhead, expectedtail):
         # R 2
         (((1, 2)), ((1, 2)), ((1, 2))),
         (((2, 2)), ((1, 2)), ((1, 2))),
+
+        (((2, 2)), ((0, 0)), ((1, 1))),
     )
 )
 def test_predict(head, tail, expected):
     assert predict(head, tail) == expected
+
+
+@pytest.mark.parametrize(
+    "direction, rope, expected",
+    [
+        ('U', [(4, 1), (3, 0), (2, 0), (1, 0), (0, 0), (0, 0)], [(4, 2), (4, 1), (3, 1), (2, 1), (1, 1), (0, 0)]),
+        ('U', [(4, 2), (4, 1), (3, 1), (2, 1), (1, 1), (0, 0)], [(4, 3), (4, 2), (3, 1), (2, 1), (1, 1), (0, 0)]),
+        ('U', [(4, 3), (4, 2), (3, 1), (2, 1), (1, 1), (0, 0)], [(4, 4), (4, 3), (4, 2), (3, 2), (2, 2), (1, 1)]),
+    ]
+)
+def test_iterate(direction, rope,  expected):
+    assert iterate(direction, rope) == expected

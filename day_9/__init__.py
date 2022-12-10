@@ -1,1 +1,1 @@
-from .main import generatePath, predict
+from .main import generatePath, predict, iterate
