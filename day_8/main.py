@@ -94,8 +94,6 @@ def scenic(grid, choord):
         if select >= top or j == 0:
             break
     left = tally
-
-    print(grid[x][y], (x, y), [up, left, right, down])
     return left * up * right * down
 
 
