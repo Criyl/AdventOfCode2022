@@ -1,5 +1,5 @@
 import pytest
-from day_3 import getCommon, getScore, intersectMany
+from day_03 import getCommon, getScore, intersectMany
 
 
 @pytest.mark.parametrize("sack, expected", [

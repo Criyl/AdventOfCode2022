@@ -66,7 +66,7 @@ def doMove9001(stacks, move):
 if __name__ == "__main__":
     part1_containers = ""
     part2_containers = ""
-    with open("day_5/input.txt") as file:
+    with open("day_05/input.txt") as file:
         crateString = ""
         line = file.readline()
         while line != "\n":

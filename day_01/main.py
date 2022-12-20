@@ -1,6 +1,6 @@
 highest = 0
 arr = [0]
-with open("day_1/input.txt") as file:
+with open("day_01/input.txt") as file:
     count = 0
     for line in file.readlines():
         stripped = line.strip()

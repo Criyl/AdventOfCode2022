@@ -1,5 +1,5 @@
 import pytest
-from day_6 import getMarker
+from day_06 import getMarker
 
 
 @pytest.mark.parametrize("input, expected", [
