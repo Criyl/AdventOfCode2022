@@ -84,9 +84,7 @@ if __name__ == "__main__":
         text = file.read()
 
         path = solve(text)
-        # print_path(path)
         print(len(path)-1)
 
-        path2 = solve(text, part1=False)
-        # print_path(path2)
+        path2 = solve(text, startOnly=False)
         print(len(path2)-1)
