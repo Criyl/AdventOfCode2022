@@ -58,7 +58,7 @@ def generatePath(steps, n=2):
 
 
 if __name__ == "__main__":
-    with open("day_9/input.txt") as file:
+    with open("day_09/input.txt") as file:
         text = file.read()
         history = generatePath(text, 10)
         mapped = map(lambda rope: rope[9], history)
