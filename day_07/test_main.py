@@ -1,10 +1,10 @@
 import pytest
-from day_7 import buildDict, sumDirectory, sizeup
+from day_07 import buildDict, sumDirectory, sizeup
 
 
 @pytest.mark.parametrize("text, expected", [
     (
-        open("day_7/case/0.txt").read(),
+        open("day_07/case/0.txt").read(),
         {
             "/": {
                 "b.txt": 14848514,

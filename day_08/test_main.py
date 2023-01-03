@@ -1,6 +1,5 @@
 import pytest
-
-from day_8 import gridify, visible, countGrid, scenic
+from day_08 import gridify, visible, countGrid, scenic
 
 
 @pytest.mark.parametrize(

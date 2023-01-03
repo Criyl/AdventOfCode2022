@@ -1,10 +1,10 @@
 import pytest
-from day_5 import parseContainers, doMove9000, doMove9001
+from day_05 import parseContainers, doMove9000, doMove9001
 
 
 @pytest.mark.parametrize("text, expected", [
-    (open("day_5/case/0.txt").read(), [['Z', 'N'], ['M', 'C', 'D'], ['P']]),
-    (open("day_5/case/1.txt").read(), [[], ['M', 'C'], ['P', 'D', 'N', 'Z'], ['J']])
+    (open("day_05/case/0.txt").read(), [['Z', 'N'], ['M', 'C', 'D'], ['P']]),
+    (open("day_05/case/1.txt").read(), [[], ['M', 'C'], ['P', 'D', 'N', 'Z'], ['J']])
 ])
 def test_parsingContainers(text, expected):
     print(f"\"{text}\"")

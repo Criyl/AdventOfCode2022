@@ -98,7 +98,7 @@ def scenic(grid, choord):
 
 
 if __name__ == "__main__":
-    with open("day_8/input.txt") as file:
+    with open("day_08/input.txt") as file:
         text = file.read()
         grid = gridify(text)
         vis = visible(grid)

@@ -68,7 +68,7 @@ def sizeup(directory, name=""):
 
 
 if __name__ == "__main__":
-    with open("day_7/input.txt") as file:
+    with open("day_07/input.txt") as file:
         text = file.read()
         filesystem = buildDict(text)
         sizes = sizeup(filesystem)

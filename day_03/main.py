@@ -25,7 +25,7 @@ if __name__ == "__main__":
     thruple = []
     part2 = 0
 
-    with open("day_3/input.txt") as file:
+    with open("day_03/input.txt") as file:
         for line in file.readlines():
             stripped = line.strip()
 
